@@ -20,3 +20,27 @@ class MediaObject:
 
     def __str__(self) -> str:
         return f"<{self.__class__.__name__}({self.filename})>"
+
+
+class Image(MediaObject):
+    """Изображение с базовыми параметрами и EXIF-метаданными."""
+
+    def __init__(self, filename: str, width: int = 0, height: int = 0) -> None:
+        super().__init__(filename, 0)
+
+        if width < 0 or height < 0:
+            raise ValueError("Ширина и высота не могут быть отрицательными")
+
+        self.width = width
+        self.height = height
+
+    def get_resolution(self) -> str:
+        """Вернуть разрешение изображения в формате "ШИРИНАxВЫСОТА"."""
+        return f"{self.width}x{self.height}"
+
+    def get_info(self) -> str:
+        """Вернуть расширенную информацию об изображении."""
+        return (
+            f"{super().get_info()}, "
+            f"{self.get_resolution()}"
+        )
