@@ -58,22 +58,12 @@ class Image(MediaObject):
             raise FileNotFoundError(f"Файл не найден: {path}")
 
         if path.suffix.lower() not in cls.SUPPORTED_EXTENSIONS:
-            raise ValueError(
-                f"Неподдерживаемый формат {path.suffix!r}; "
-                f"ожидался JPG, JPEG или PNG"
-            )
+            raise ValueError(f"Неподдерживаемый формат {path.suffix!r}; "f"ожидался JPG, JPEG или PNG")
 
         with PILImage.open(path) as image:
             exif = image.getexif()
-            exif_data = {
-                TAGS.get(tag, f"Unknown Tag {tag}"): value for tag, value in exif.items()
-            }
-            result = cls(
-                filename=str(path),
-                width=image.width,
-                height=image.height,
-                exif_data=exif_data,
-            )
+            exif_data = {TAGS.get(tag, f"Unknown Tag {tag}"): value for tag, value in exif.items()}
+            result = cls(filename=str(path), width=image.width, height=image.height, exif_data=exif_data)
             result.color_space = image.mode
 
             return result
