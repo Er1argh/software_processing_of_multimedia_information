@@ -119,3 +119,25 @@ class Image(MediaObject):
             f"цветовой режим={self.get_color_space()}, "
             f"камера={self.get_camera_info()}"
         )
+
+
+class MediaLibrary:
+    """Коллекция мультимедийных объектов."""
+
+    def __init__(self) -> None:
+        self.media_objects: list[MediaObject] = []
+
+    def add(self, media_obj: MediaObject) -> None:
+        """Добавить объект в библиотеку."""
+        if not isinstance(media_obj, MediaObject):
+            raise TypeError("В библиотеку можно добавлять только MediaObject")
+
+        self.media_objects.append(media_obj)
+
+    def get_total_duration(self) -> float:
+        """Вернуть суммарную длительность всех объектов."""
+        return sum(obj.duration for obj in self.media_objects)
+
+    def filter_by_type(self, media_type: type[MediaObject]) -> list[MediaObject]:
+        """Вернуть объекты заданного типа или его наследников."""
+        return [obj for obj in self.media_objects if isinstance(obj, media_type)]
