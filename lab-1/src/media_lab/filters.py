@@ -3,7 +3,8 @@
 from abc import ABC, abstractmethod
 
 from PIL import Image as PILImage
-from PIL import ImageEnhance, ImageFilter as PILImageFilter
+from PIL import ImageEnhance
+from PIL import ImageFilter as PILImageFilter
 
 
 class ImageFilter(ABC):

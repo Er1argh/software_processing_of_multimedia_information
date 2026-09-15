@@ -34,7 +34,7 @@ class MediaObject:
 class Image(MediaObject):
     """Изображение с базовыми параметрами и EXIF-метаданными."""
 
-    SUPPORTED_EXTENSIONS = {".jpg", ".jpeg", ".png"}
+    SUPPORTED_EXTENSIONS = frozenset({".jpg", ".jpeg", ".png"})
 
     def __init__(self, filename: str, width: int = 0, height: int = 0, exif_data: dict[str, Any] | None = None) -> None:
         super().__init__(filename, duration=0.0)

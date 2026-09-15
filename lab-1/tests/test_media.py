@@ -1,11 +1,6 @@
 """Тесты"""
-from pytest import raises
-
 from PIL import Image as PILImage
-
-from media_lab.media_objects import MediaObject
-from media_lab.media_objects import Image
-from media_lab.media_objects import MediaLibrary
+from pytest import raises
 
 from media_lab.filters import (
     BlurFilter,
@@ -13,6 +8,11 @@ from media_lab.filters import (
     ContrastFilter,
     ImageFilter,
     process_image,
+)
+from media_lab.media_objects import (
+    Image,
+    MediaLibrary,
+    MediaObject,
 )
 
 
