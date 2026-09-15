@@ -48,7 +48,7 @@ def main() -> None:
         result.save(OUTPUT_IMAGE, format="JPEG", quality=95)
 
 
-print(f"\nРезультат фильтрации сохранён: {OUTPUT_IMAGE}")
+    print(f"\nРезультат фильтрации сохранён: {OUTPUT_IMAGE}")
 
 if __name__ == "__main__":
     main()
